@@ -1,0 +1,17 @@
+{
+    "cordova_version": "7.1",
+    "framework_version": "3.5",
+    "xcode_version": "9",
+    "title-ja": "卒業研究Monaca",
+    "title-en": "",
+    "description-ja": "",
+    "description-en": "",
+    "category": "User Template",
+    "platform": [
+        "android",
+        "ios",
+        "winrt",
+        "chrome"
+    ],
+    "name": "generated-1518743810-5a584890e78885d04a8b4567"
+}

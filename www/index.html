@@ -1,0 +1,1177 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="js/MobileServices.Web.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/json.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    
+  
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    // Page init event
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+      
+      //メインページ
+      if (page.matches('#main-page')) {
+        
+        page.querySelector('#push-button1-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('station-select.html');
+        }
+        
+        page.querySelector('#push-button1-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('shop-info-input.html');
+        };
+    
+      //駅名選択ページ
+      } else if (page.matches('#station-select-page')) {
+
+        page.querySelector('#push-button2-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('yaizu-taste.html');
+        };
+        
+        page.querySelector('#push-button2-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('nishi-yaizu-taste.html');
+        };
+        
+        page.querySelector('#push-button2-3').onclick = function() {
+          document.querySelector('#navigator').pushPage('fujieda-taste.html');
+        };
+        
+        page.querySelector('#push-button2-4').onclick = function() {
+          document.querySelector('#navigator').pushPage('rokugo-taste.html');
+        };
+        
+        page.querySelector('#push-button2-5').onclick = function() {
+          document.querySelector('#navigator').pushPage('shimada-taste.html');
+        };
+      
+      //味選択ページ
+      
+      //焼津味選択ページ
+      } else if (page.matches('#yaizu-taste-page')) {
+
+        page.querySelector('#push-button3-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('yaizu-salt-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('yaizu-soysauce-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-3').onclick = function() {
+          document.querySelector('#navigator').pushPage('yaizu-miso-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-4').onclick = function() {
+          document.querySelector('#navigator').pushPage('yaizu-pig-shop-select.html');
+        };
+    
+      //西焼津味選択ページ
+      } else if (page.matches('#nishi-yaizu-taste-page')) {
+
+        page.querySelector('#push-button3-5').onclick = function() {
+          document.querySelector('#navigator').pushPage('nishi-yaizu-salt-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-6').onclick = function() {
+          document.querySelector('#navigator').pushPage('nishi-yaizu-soysauce-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-7').onclick = function() {
+          document.querySelector('#navigator').pushPage('nishi-yaizu-miso-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-8').onclick = function() {
+          document.querySelector('#navigator').pushPage('nishi-yaizu-pig-shop-select.html');
+        };
+      
+      //藤枝味選択ページ
+      } else if (page.matches('#fujieda-taste-page')) {
+
+        page.querySelector('#push-button3-9').onclick = function() {
+          document.querySelector('#navigator').pushPage('fujieda-salt-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-10').onclick = function() {
+          document.querySelector('#navigator').pushPage('fujieda-soysauce-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-11').onclick = function() {
+          document.querySelector('#navigator').pushPage('fujieda-miso-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-12').onclick = function() {
+          document.querySelector('#navigator').pushPage('fujieda-pig-shop-select.html');
+        };
+    
+      //六合味選択ページ
+      } else if (page.matches('#rokugo-taste-page')) {
+
+        page.querySelector('#push-button3-13').onclick = function() {
+          document.querySelector('#navigator').pushPage('rokugo-salt-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-14').onclick = function() {
+          document.querySelector('#navigator').pushPage('rokugo-soysauce-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-15').onclick = function() {
+          document.querySelector('#navigator').pushPage('rokugo-miso-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-16').onclick = function() {
+          document.querySelector('#navigator').pushPage('rokugo-pig-shop-select.html');
+        };
+    
+      //島田味選択ページ
+      } else if (page.matches('#shimada-taste-page')) {
+
+        page.querySelector('#push-button3-17').onclick = function() {
+          document.querySelector('#navigator').pushPage('shimada-salt-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-18').onclick = function() {
+          document.querySelector('#navigator').pushPage('shimada-soysauce-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-19').onclick = function() {
+          document.querySelector('#navigator').pushPage('shimada-miso-shop-select.html');
+        };
+        
+        page.querySelector('#push-button3-20').onclick = function() {
+          document.querySelector('#navigator').pushPage('shimada-pig-shop-select.html');
+        };
+    
+      //塩味
+    
+      //焼津塩店選択ページ
+      } else if (page.matches('#yaizu-salt-shop-select-page')) {
+
+        page.querySelector('#push-button4-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('nagomitei.html');
+        };
+        
+        page.querySelector('#push-button4-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('menyasaizou.html');
+        };
+        
+        page.querySelector('#push-button4-3').onclick = function() {
+          document.querySelector('#navigator').pushPage('ponpu.html');
+        };
+    
+      //西焼津塩店選択ページ
+      } else if (page.matches('#nishi-yaizu-salt-shop-select-page')) {
+
+        page.querySelector('#push-button4-4').onclick = function() {
+          document.querySelector('#navigator').pushPage('chikkin.html');
+        };
+    
+      //藤枝塩店選択ページ
+      } else if (page.matches('#fujieda-salt-shop-select-page')) {
+        
+        page.querySelector('#push-button4-5').onclick = function() {
+          document.querySelector('#navigator').pushPage('touson-fujiedaten.html');
+        };
+        
+        page.querySelector('#push-button4-6').onclick = function() {
+          document.querySelector('#navigator').pushPage('kotetsu.html');
+        };
+
+      //六合塩店選択ページ
+      } else if (page.matches('#rokugo-salt-shop-select-page')) {
+        
+        page.querySelector('#push-button4-7').onclick = function() {
+          document.querySelector('#navigator').pushPage('ramen-le-dessin.html');
+        };
+        
+        page.querySelector('#push-button4-8').onclick = function() {
+          document.querySelector('#navigator').pushPage('ikkou.html');
+        };
+      
+      //島田塩店選択ページ
+      
+      //醤油味
+      
+      //焼津醤油店選択ページ
+      } else if (page.matches('#yaizu-soysauce-shop-select-page')) {
+
+        page.querySelector('#push-button5-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('nagomitei.html');
+        };
+        
+        page.querySelector('#push-button5-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('menyasaizou.html');
+        };
+        
+        page.querySelector('#push-button5-3').onclick = function() {
+          document.querySelector('#navigator').pushPage('ponpu.html');
+        };
+    
+      //西焼津醤油店選択ページ
+      } else if (page.matches('#nishi-yaizu-soysauce-shop-select-page')) {
+
+        page.querySelector('#push-button5-4').onclick = function() {
+          document.querySelector('#navigator').pushPage('chikkin.html');
+        };
+    
+      //藤枝醤油店選択ページ
+      } else if (page.matches('#fujieda-soysauce-shop-select-page')) {
+        
+        page.querySelector('#push-button5-5').onclick = function() {
+          document.querySelector('#navigator').pushPage('touson-fujiedaten.html');
+        };
+        
+        page.querySelector('#push-button5-6').onclick = function() {
+          document.querySelector('#navigator').pushPage('kotetsu.html');
+        };
+    
+      //六合醤油店選択ページ
+      } else if (page.matches('#rokugo-soysauce-shop-select-page')) {
+        
+        page.querySelector('#push-button5-7').onclick = function() {
+          document.querySelector('#navigator').pushPage('ramen-le-dessin.html');
+        };
+        
+        page.querySelector('#push-button5-8').onclick = function() {
+          document.querySelector('#navigator').pushPage('ikkou.html');
+        };
+    
+      //島田醤油店選択ページ
+      } else if (page.matches('#shimada-soysauce-shop-select-page')) {
+
+        page.querySelector('#push-button5-9').onclick = function() {
+          document.querySelector('#navigator').pushPage('menyayokatai.html');
+        };
+    
+      //味噌味
+      
+      //焼津味噌店選択ページ
+      } else if (page.matches('#yaizu-miso-shop-select-page')) {
+
+        page.querySelector('#push-button6-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('nagomitei.html');
+        };
+        
+        page.querySelector('#push-button6-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('ponpu.html');
+        };
+        
+      //西焼津味噌店選択ページ
+    
+      //藤枝味噌店選択ページ
+      } else if (page.matches('#fujieda-miso-shop-select-page')) {
+        
+        page.querySelector('#push-button6-3').onclick = function() {
+          document.querySelector('#navigator').pushPage('touson-fujiedaten.html');
+        };
+        
+        page.querySelector('#push-button6-4').onclick = function() {
+          document.querySelector('#navigator').pushPage('rairaitei-fujiedaten.html');
+        };
+        
+        page.querySelector('#push-button6-5').onclick = function() {
+          document.querySelector('#navigator').pushPage('kanakinteihonpo-fujiedahonten.html');
+        };
+    
+      //六合味噌店選択ページ
+      } else if (page.matches('#rokugo-miso-shop-select-page')) {
+
+        page.querySelector('#push-button6-6').onclick = function() {
+          document.querySelector('#navigator').pushPage('menya-tsubame.html');
+        };
+        
+        page.querySelector('#push-button6-7').onclick = function() {
+          document.querySelector('#navigator').pushPage('ramen-le-dessin.html');
+        };
+        
+        page.querySelector('#push-button6-8').onclick = function() {
+          document.querySelector('#navigator').pushPage('ikkou.html');
+        };
+    
+      //島田味噌店選択ページ
+    
+      //豚骨味
+    
+      //焼津豚骨店選択ページ
+      } else if (page.matches('#yaizu-pig-shop-select-page')) {
+
+        page.querySelector('#push-button7-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('nagomitei.html');
+        };
+    
+      //西焼津豚骨店選択ページ
+      } else if (page.matches('#nishi-yaizu-pig-shop-select-page')) {
+        
+        page.querySelector('#push-button7-2').onclick = function() {
+          document.querySelector('#navigator').pushPage('magokoro.html');
+        };
+    
+      //藤枝豚骨店選択ページ
+      } else if (page.matches('#fujieda-pig-shop-select-page')) {
+        
+        page.querySelector('#push-button7-3').onclick = function() {
+          document.querySelector('#navigator').pushPage('kotetsu.html');
+        };
+        
+      //六合豚骨店選択ページ
+    
+      //島田豚骨店選択ページ
+      } else if (page.matches('#shimada-pig-shop-select-page')) {
+
+        page.querySelector('#push-button7-4').onclick = function() {
+          document.querySelector('#navigator').pushPage('menyayokatai.html');
+        };
+    
+      //和味亭ページ
+      } else if (page.matches('#nagomitei-page')) {
+        
+        page.querySelector('#push-button8-1').onclick = function() {
+          document.querySelector('#navigator').pushPage('nagomiteimap.html');
+        };
+        
+      }
+    });
+  </script>
+</head>
+<body>
+  <ons-navigator id="navigator" page="main.html"></ons-navigator>
+  
+  //メインページ
+  <ons-template id="main.html">
+    <ons-page id="main-page">
+      <div class="content" style="text-align: center">
+        <br>
+        <font size="7">Ramen Search</font><br><br><br>
+        <img id="push-button1-1" src="images/search.png"><br><br>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  //駅名選択ページ
+  <ons-template id="station-select.html">
+    <ons-page id="station-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Top</ons-back-button></div>
+        <div class="center">Select Station</div>
+      </ons-toolbar>
+      
+        <div class="content" style="text-align: center">
+            <br>
+            <img id="push-button2-1" src="images/station/yaizu.jpg"><br><br>
+            <img id="push-button2-2" src="images/station/nishi-yaizu.jpg"><br><br>
+            <img id="push-button2-3" src="images/station/fujieda.jpg"><br><br>
+            <img id="push-button2-4" src="images/station/rokugo.jpg"><br><br>
+            <img id="push-button2-5" src="images/station/shimada.jpg"><br><br>
+        </div>
+    </ons-page>
+  </ons-template>
+  
+  //味選択ページ
+  
+  //焼津味選択ページ
+  <ons-template id="yaizu-taste.html">
+    <ons-page id="yaizu-taste-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Station</ons-back-button></div>
+        <div class="center">Select Taste</div>
+      </ons-toolbar>
+      
+        <div class="content" style="text-align: center">
+        <br>
+            <img id="push-button3-1" src="images/taste/salt.jpg"><br><br>
+            <img id="push-button3-2" src="images/taste/soysauce.png"><br><br>
+            <img id="push-button3-3" src="images/taste/miso.png"><br><br>
+            <img id="push-button3-4" src="images/taste/pig.jpg"><br><br>
+        </div>
+    </ons-page>
+  </ons-template>
+  
+  //西焼津味選択ページ
+  <ons-template id="nishi-yaizu-taste.html">
+    <ons-page id="nishi-yaizu-taste-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Station</ons-back-button></div>
+        <div class="center">Select Taste</div>
+      </ons-toolbar>
+      
+        <div class="content" style="text-align: center">
+            <img id="push-button3-5" src="images/taste/salt.jpg"><br><br>
+            <img id="push-button3-6" src="images/taste/soysauce.png"><br><br>
+            <img id="push-button3-7" src="images/taste/miso.png"><br><br>
+            <img id="push-button3-8" src="images/taste/pig.jpg"><br><br>
+        </div>
+    </ons-page>
+  </ons-template>
+  
+  //藤枝味選択ページ
+  <ons-template id="fujieda-taste.html">
+    <ons-page id="fujieda-taste-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Station</ons-back-button></div>
+        <div class="center">Select Taste</div>
+      </ons-toolbar>
+    
+        <div class="content" style="text-align: center">
+            <img id="push-button3-9" src="images/taste/salt.jpg"><br><br>
+            <img id="push-button3-10" src="images/taste/soysauce.png"><br><br>
+            <img id="push-button3-11" src="images/taste/miso.png"><br><br>
+            <img id="push-button3-12" src="images/taste/pig.jpg"><br><br>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //六合味選択ページ
+  <ons-template id="rokugo-taste.html">
+    <ons-page id="rokugo-taste-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Station</ons-back-button></div>
+        <div class="center">Select Taste</div>
+      </ons-toolbar>
+
+        <div class="content" style="text-align: center">
+            <img id="push-button3-13" src="images/taste/salt.jpg"><br><br>
+            <img id="push-button3-14" src="images/taste/soysauce.png"><br><br>
+            <img id="push-button3-15" src="images/taste/miso.png"><br><br>
+            <img id="push-button3-16" src="images/taste/pig.jpg"><br><br>
+        </div>
+    </ons-page>
+  </ons-template>
+  
+  //島田味選択ページ
+  <ons-template id="shimada-taste.html">
+    <ons-page id="shimada-taste-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Station</ons-back-button></div>
+        <div class="center">Select Taste</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <img id="push-button3-17" src="images/taste/salt.jpg"><br><br>
+            <img id="push-button3-18" src="images/taste/soysauce.png"><br><br>
+            <img id="push-button3-19" src="images/taste/miso.png"><br><br>
+            <img id="push-button3-20" src="images/taste/pig.jpg"><br><br>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //塩味
+  
+  //焼津塩店選択ページ
+  <ons-template id="yaizu-salt-shop-select.html">
+    <ons-page id="yaizu-salt-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button4-1" onclick="showComments()">和味亭</ons-list-item>
+            <ons-list-item id="push-button4-2">麺屋才蔵</ons-list-item>
+            <ons-list-item id="push-button4-3">ぽんぷ</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //西焼津塩店選択ページ
+  <ons-template id="nishi-yaizu-salt-shop-select.html">
+    <ons-page id="nishi-yaizu-salt-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button4-4">ちっきん</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //藤枝塩店選択ページ
+  <ons-template id="fujieda-salt-shop-select.html">
+    <ons-page id="fujieda-salt-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button4-5">とうそん藤枝店</ons-list-item>
+            <ons-list-item id="push-button4-6">虎徹</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //六合塩店選択ページ
+  <ons-template id="rokugo-salt-shop-select.html">
+    <ons-page id="rokugo-salt-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button4-7">ラーメンル・デッサン</ons-list-item>
+            <ons-list-item id="push-button4-8">いっこう</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //島田塩店選択ページ
+  <ons-template id="shimada-salt-shop-select.html">
+    <ons-page id="shimada-salt-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+        データがありません
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //醤油
+  
+  //焼津醤油店選択ページ
+  <ons-template id="yaizu-soysauce-shop-select.html">
+    <ons-page id="yaizu-soysauce-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button5-1">和味亭</ons-list-item>
+            <ons-list-item id="push-button5-2">麺屋才蔵</ons-list-item>
+            <ons-list-item id="push-button5-3">ぽんぷ</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //西焼津醤油店選択ページ
+  <ons-template id="nishi-yaizu-soysauce-shop-select.html">
+    <ons-page id="nishi-yaizu-soysauce-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button5-4">ちっきん</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //藤枝醤油店選択ページ
+  <ons-template id="fujieda-soysauce-shop-select.html">
+    <ons-page id="fujieda-soysauce-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button5-5">とうそん藤枝店</ons-list-item>
+            <ons-list-item id="push-button5-6">虎徹</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //六合醤油店選択ページ
+  <ons-template id="rokugo-soysauce-shop-select.html">
+    <ons-page id="rokugo-soysauce-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button5-7">ラーメンル・デッサン</ons-list-item>
+            <ons-list-item id="push-button5-8">いっこう</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //島田醤油店選択ページ
+  <ons-template id="shimada-soysauce-shop-select.html">
+    <ons-page id="shimada-soysauce-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            データがありません
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //味噌
+  
+  //焼津味噌店選択ページ
+  <ons-template id="yaizu-miso-shop-select.html">
+    <ons-page id="yaizu-miso-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button6-1">和味亭</ons-list-item>
+            <ons-list-item id="push-button6-2">ぽんぷ</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //西焼津味噌店選択ページ
+  <ons-template id="nishi-yaizu-miso-shop-select.html">
+    <ons-page id="nishi-yaizu-miso-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            データがありません
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //藤枝味噌店選択ページ
+  <ons-template id="fujieda-miso-shop-select.html">
+    <ons-page id="fujieda-miso-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button6-3">とうそん藤枝店</ons-list-item>
+            <ons-list-item id="push-button6-4">来来亭藤枝店</ons-list-item>
+            <ons-list-item id="push-button6-5">カナキン亭本舗藤枝本店</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //六合味噌店選択ページ
+  <ons-template id="rokugo-miso-shop-select.html">
+    <ons-page id="rokugo-miso-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button6-6">麺屋燕</ons-list-item>
+            <ons-list-item id="push-button6-7">ラーメンル・デッサン</ons-list-item>
+            <ons-list-item id="push-button6-8">いっこう</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //島田味噌店選択ページ
+  <ons-template id="shimada-miso-shop-select.html">
+    <ons-page id="shimada-miso-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+        データがありません
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //豚骨
+  
+  //焼津豚骨店選択ページ
+  <ons-template id="yaizu-pig-shop-select.html">
+    <ons-page id="yaizu-pig-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button7-1">和味亭</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //西焼津豚骨店選択ページ
+  <ons-template id="nishi-yaizu-pig-shop-select.html">
+    <ons-page id="nishi-yaizu-pig-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button7-2">まごころ</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //藤枝豚骨店選択ページ
+  <ons-template id="fujieda-pig-shop-select.html">
+    <ons-page id="fujieda-pig-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button7-3">虎徹</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //六合豚骨店選択ページ
+  <ons-template id="rokugo-pig-shop-select.html">
+    <ons-page id="rokugo-pig-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            データがありません
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //島田豚骨店選択ページ
+  <ons-template id="shimada-pig-shop-select.html">
+    <ons-page id="shimada-pig-shop-select-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Taste</ons-back-button></div>
+        <div class="center">Select Shop</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <div class="content" style="text-align: center">
+            <ons-list-item id="push-button7-4">麺屋よかたい</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+  
+  //店情報
+  
+  //和味亭
+  <ons-template id="nagomitei.html">
+    <ons-page id="nagomitei-page" ng-controller="MapController">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">和味亭</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="nagomitei-img" src="https://tblg.k-img.com/restaurant/images/Rvw/49466/640x640_rect_49466753.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            昼<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:30～14:00（月～土曜日）<br>
+            夜<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～2:00（月～木曜日）<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～3:00（金～土曜日）<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;16:00～24:00（日曜日)<br><br>
+            定休日：<br>
+            日曜日　昼のみ<br><br>
+            電話番号：<br>
+            054-628-3030<br><br>
+            住所：<br>
+            静岡県焼津市栄町1-2-2<br><br>
+            交通手段：<br>
+            焼津駅南口より徒歩2分</font><br><br>
+        <div id="map_canvas"></div>
+     </div>
+    </ons-page>
+  </ons-template>
+  
+  //麺屋才蔵
+  <ons-template id="menyasaizou.html">
+    <ons-page id="menyasaizou-page" ng-controller="MapController2">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">麺屋才蔵</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: left">
+        <img id="menyasaizou-img" src="http://blog-imgs-34.fc2.com/j/o/h/johnnygori/20110509144959793.jpg"><br><br>   
+        <font size="4">営業時間：<br>
+            昼<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:00～14:30<br>
+            夜<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:30～21:00<br><br>
+            定休日：<br>
+            水・木曜日<br><br>
+            電話番号：<br>
+            054-625-2066<br><br>
+            住所：<br>
+            静岡県焼津市石津71 Part15-105<br><br>
+            交通手段：<br>
+            西焼津駅北口より徒歩45分</font><br><br>
+        <div id="map_canvas2"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //ぽんぷ
+  <ons-template id="ponpu.html">
+    <ons-page id="ponpu-page" ng-controller="MapController3">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">ぽんぷ</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="ponpu-img" src="http://blog-imgs-60.fc2.com/j/o/h/johnnygori/20130509142254982.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            昼<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:30～14:00<br>
+            夜<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～21:00（月～土）<br><br>
+            定休日：<br>
+            無休<br><br>
+            電話番号：<br>
+            054-624-8901<br><br>
+            住所：<br>
+            静岡県焼津市石津向町22-5<br><br>
+            交通手段：<br>
+            焼津駅南口より51分</font><br><br>
+        <div id="map_canvas3"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //ちっきん
+  <ons-template id="chikkin.html">
+    <ons-page id="chikkin-page" ng-controller="MapController4">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">ちっきん</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="chikkin-img" src="https://tblg.k-img.com/restaurant/images/Rvw/47675/640x640_rect_47675172.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            7:00～14:00<br><br>
+            定休日：<br>
+            日・月曜日<br><br>
+            電話番号：<br>
+            054-646-6078<br><br>
+            住所：<br>
+            静岡県藤枝市田中2丁目13-6<br><br>
+            交通手段：<br>
+            西焼津駅北口より、徒歩25分</font><br><br>
+        <div id="map_canvas4"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //とうそん藤枝店
+  <ons-template id="touson-fujiedaten.html">
+    <ons-page id="touson-fujiedaten-page" ng-controller="MapController5">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">とうそん藤枝店</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="touson-fujiedaten-img" src="https://tblg.k-img.com/restaurant/images/Rvw/1355/1355698.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            平日<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:00～14:30<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:30～21:00<br>
+            土・日・祝日<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:00～21:00<br><br>
+            定休日：<br>
+            水曜日（祝日の場合は営業）<br><br>
+            電話番号：<br>
+            054-635-7131<br><br>
+            住所：<br>
+            静岡県藤枝市田沼2-22-15<br><br>
+            交通手段：<br>
+            藤枝駅南口より、徒歩14分</font><br><br>
+            <div id="map_canvas5"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //虎徹
+  <ons-template id="kotetsu.html">
+    <ons-page id="kotetsu-page" ng-controller="MapController6">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">虎徹</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="kotetsu-img" src="https://tblg.k-img.com/restaurant/images/Rvw/5278/640x640_rect_5278629.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            昼<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;水・木・金<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;10:30～14:30<br>
+            夜<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;火・水・木<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:30～3:00<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;オールナイト営業　金・土<br><br>
+            定休日：<br>
+            日曜日　昼のみ<br><br>
+            電話番号：<br>
+            054-628-3030<br><br>
+            住所：<br>
+            静岡県焼津市栄町1-2-2<br><br>
+            交通手段：<br>
+            焼津駅より徒歩2分</font><br><br>
+        <div id="map_canvas6"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //ラーメン・ル・デッサン
+  <ons-template id="ramen-le-dessin.html">
+    <ons-page id="ramen-le-dessin-page" ng-controller="MapController7">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">ラーメン・ル・デッサン</div>
+      </ons-toolbar>
+      
+     <div class="content" style="text-align: left">
+        <img id="ramen-le-dessin-img" src="https://tblg.k-img.com/restaurant/images/Rvw/58478/640x640_rect_58478306.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            昼<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:30～14:00（月～土曜日）<br>
+            夜<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～2:00（月～木曜日）<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～3:00（金～土曜日）<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;16:00～24:00（日曜日)<br><br>
+            定休日：<br>
+            日曜日　昼のみ<br><br>
+            電話番号：<br>
+            054-628-3030<br><br>
+            住所：<br>
+            静岡県焼津市栄町1-2-2<br><br>
+            交通手段：<br>
+            焼津駅より徒歩2分</font><br><br>
+        <div id="map_canvas7"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //いっこう
+  <ons-template id="ikkou.html">
+    <ons-page id="ikkou-page" ng-controller="MapController8">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">いっこう</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="ikkou-img" src="https://tblg.k-img.com/restaurant/images/Rvw/35952/640x640_rect_35952159.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            昼<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;11:30～14:00（月～土曜日）<br>
+            夜<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～2:00（月～木曜日）<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;17:00～3:00（金～土曜日）<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;16:00～24:00（日曜日)<br><br>
+            定休日：<br>
+            日曜日　昼のみ<br><br>
+            電話番号：<br>
+            054-628-3030<br><br>
+            住所：<br>
+            静岡県焼津市栄町1-2-2<br><br>
+            交通手段：<br>
+            焼津駅より徒歩2分</font><br><br>
+        <div id="map_canvas8"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //まごころ
+  <ons-template id="magokoro.html">
+    <ons-page id="magokoro-page" ng-controller="MapController9">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">まごころ</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="magokoro-img" src="http://livedoor.blogimg.jp/barwoodball/imgs/1/1/113d1a10.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            7:30～13:30<br><br>
+            定休日：<br>
+            月・第3火曜日<br><br>
+            電話番号：<br>
+            054-643-0565<br><br>
+            住所：<br>
+            静岡県藤枝市郡1022-4<br><br>
+            交通手段：<br>
+            西焼津駅北口より、徒歩29分</font><br><br>
+        <div id="map_canvas9"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //麺屋　燕
+  <ons-template id="menya-tsubame.html">
+    <ons-page id="menya-tsubame-page" ng-controller="MapController10">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">麺屋　燕</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="menya-tsubame-img" src="https://tblg.k-img.com/restaurant/images/Rvw/16465/640x640_rect_16465360.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            平日<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;6:30～9:00<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;10:30～14:15<br>
+            土・日・祝<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;6:30～14:15<br><br>
+            定休日：<br>
+            第3火曜日・翌水曜日<br><br>
+            電話番号：<br>
+            0547-37-2223<br><br>
+            住所：<br>
+            静岡県島田市御仮屋町8770<br><br>
+            交通手段：<br>
+            六合駅南口より、徒歩17分</font><br><br>
+        <div id="map_canvas10"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //麺屋よかたい
+  <ons-template id="menyayokatai.html">
+    <ons-page id="menyayokatai-page" ng-controller="MapController11">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">麺屋よかたい</div>
+      </ons-toolbar>
+
+        <div class="content" style="text-align: left">
+            <img id="menyayokatai-img" src="https://tblg.k-img.com/restaurant/images/Rvw/42894/640x640_rect_42894143.jpg"><br><br>
+            <font size="4">営業時間：<br>
+                11:00～14:00<br>
+                17:00～24:00<br>
+                金・土<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;26:00まで<br><br>
+                定休日：<br>
+                火曜日<br><br>
+                電話番号：<br>
+                090-4229-9339<br><br>
+                住所：<br>
+                静岡県島田市本通2-4-15<br><br>
+                交通手段：<br>
+                島田駅北口より、徒歩6分</font><br><br>
+            <div id="map_canvas11"></div>
+        </div>
+    </ons-page>
+  </ons-template>
+  
+  //来来亭 藤枝店
+  <ons-template id="rairaitei-fujiedaten.html">
+    <ons-page id="rairaitei-fujiedaten-page" ng-controller="MapController12">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">来来亭 藤枝店</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="rairaitei-fujiedaten-img" src="https://imgfp.hotp.jp/IMGH/34/87/P018293487/P018293487_480.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            11:00～24:00<br><br>
+            定休日：<br>
+            無休<br><br>
+            電話番号：<br>
+            054-646-7716<br><br>
+            住所：<br>
+            静岡県藤枝市小石川町三丁目10-41<br><br>
+            交通手段：<br>
+            藤枝駅北口より、徒歩17分</font><br><br>
+        <div id="map_canvas12"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  //カナキン亭本舗 藤枝本店
+  <ons-template id="kanakinteihonpo-fujiedahonten.html">
+    <ons-page id="kanakinteihonpo-fujiedahonten-page" ng-controller="MapController13">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Shop</ons-back-button></div>
+        <div class="center">カナキン亭本舗 藤枝本店</div>
+      </ons-toolbar>
+      
+      <div class="content" style="text-align: left">
+        <img id="kanakinteihonpo-fujiedahonten-img" src="https://tblg.k-img.com/restaurant/images/Rvw/79064/640x640_rect_79064217.jpg"><br><br>
+        <font size="4">営業時間：<br>
+            11:00～2:00<br>
+            定休日：<br>
+            無休（※12/31～1/2のみ休み）<br><br>
+            電話番号：<br>
+            054-643-5941<br><br>
+            住所：<br>
+            静岡県藤枝市駅前3-2-17<br><br>
+            交通手段：<br>
+            藤枝駅北口より、徒歩3分</font><br><br>
+        <div id="map_canvas13"></div>
+      </div>
+    </ons-page>
+  </ons-template>
+
+</body>
+</html>

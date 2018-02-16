@@ -1,0 +1,207 @@
+#nagomitei-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#menyasaizou-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#ponpu-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#chikkin-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#touson-fujiedaten-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#kotetsu-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#ramen-le-dessin-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#ikkou-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#magokoro-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#menya-tsubame-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#menyayokatai-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#rairaitei-fujiedaten-img {
+        width: 375px;
+        height: 250px;
+      }
+
+#kanakinteihonpo-fujiedahonten-img {
+        width: 375px;
+        height: 250px;
+      }
+
+/*和味亭*/
+
+#map_canvas {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*麺屋才蔵*/
+
+#map_canvas2 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*ぽんぷ*/
+
+#map_canvas3 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*ちっきん*/
+
+#map_canvas4 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*とうそん 藤枝店*/
+
+#map_canvas5 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*虎徹*/
+
+#map_canvas6 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*ラーメン ル・デッサン*/
+
+#map_canvas7 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*いっこう*/
+
+#map_canvas8 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*まごころ*/
+
+#map_canvas9 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*麺屋 燕*/
+
+#map_canvas10 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*麺屋よかたい*/
+
+#map_canvas11 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*来来亭 藤枝店*/
+
+#map_canvas12 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
+
+/*カナキン亭本舗 藤枝本店*/
+
+#map_canvas13 {
+    position: absolute; 
+    width: 375px; 
+    height: 250px; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1
+}
